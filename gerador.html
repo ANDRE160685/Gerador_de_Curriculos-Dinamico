@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preenchimento de Dados - Gerador de Currículos</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="main-nav">
+    <a href="index.html" class="nav-link">🏠 Página Inicial</a>
+    <a href="gerador.html" class="nav-link active">📄 Criar Currículo</a>
+    <a href="vagas.html" class="nav-link">💼 Procurar Vagas</a>
+    <a href="quem-somos.html" class="nav-link">👥 Quem Somos</a>
+</nav>
+
+<div class="container">
+    <h1>Preencha seus Dados</h1>
+    <p class="subtitle">Insira suas informações completas e escolha o modelo do seu currículo</p>
+
+    <form id="curriculoForm">
+        <!-- Dados Pessoais Básicos -->
+        <div class="form-group">
+            <label for="nome">Nome Completo *</label>
+            <input type="text" id="nome" required placeholder="Ex: Juliana Ribeiro">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div class="form-group">
+                <label for="contato">Telefone / WhatsApp *</label>
+                <input type="text" id="contato" required placeholder="Ex: (81) 99999-9999">
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail *</label>
+                <input type="email" id="email" required placeholder="Ex: juliana@email.com">
+            </div>
+        </div>
+
+        <!-- Dados Pessoais e Endereço -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div class="form-group">
+                <label for="nacionalidade">Nacionalidade</label>
+                <input type="text" id="nacionalidade" placeholder="Ex: Brasileira">
+            </div>
+            <div class="form-group">
+                <label for="idade">Idade</label>
+                <input type="number" id="idade" placeholder="Ex: 28">
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div class="form-group">
+                <label for="cidade">Cidade</label>
+                <input type="text" id="cidade" placeholder="Ex: Paulista">
+            </div>
+            <div class="form-group">
+                <label for="bairro">Bairro</label>
+                <input type="text" id="bairro" placeholder="Ex: Maranguape II">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="cnh">Possui CNH?</label>
+            <select id="cnh">
+                <option value="">Selecione...</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="E">E</option>
+                <option value="AB">AB</option>
+                <option value="AC">AC</option>
+                <option value="AD">AD</option>
+                <option value="AE">AE</option>
+                <option value="Não">Não possui</option>
+            </select>
+        </div>
+
+        <!-- Área de Atuação (Texto Livre) e Cargo -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div class="form-group">
+                <label for="area">Área de Atuação Desejada</label>
+                <input type="text" id="area" placeholder="Ex: Tecnologia da Informação">
+            </div>
+            <div class="form-group">
+                <label for="cargo">Cargo Pretendido *</label>
+                <input type="text" id="cargo" required placeholder="Ex: Analista de Sistemas">
+            </div>
+        </div>
+
+        <!-- Seções Textuais do Currículo -->
+        <div class="form-group">
+            <label for="objetivo">Objetivo Profissional</label>
+            <textarea id="objetivo" placeholder="Ex: Contribuir para o crescimento da empresa atuando na área de..."></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="perfil">Perfil Profissional</label>
+            <textarea id="perfil" placeholder="Ex: Profissional proativo, focado em resultados, com facilidade de adaptação..."></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="qualificacoes">Qualificações e Habilidades</label>
+            <textarea id="qualificacoes" placeholder="Ex: Pacote Office avançado, atendimento ao cliente, organização de processos..."></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="formacao">Formação Acadêmica</label>
+            <textarea id="formacao" placeholder="Ex: Graduação em Ciência da Computação - Universidade X (Cursando / Concluído em 2025)..."></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="experiencia">Histórico Profissional</label>
+            <textarea id="experiencia" placeholder="Ex: Empresa ABC (2022 - 2024): Cargo de Assistente. Principais atividades..."></textarea>
+        </div>
+
+        <!-- Seleção de Modelos Visuais -->
+        <div class="form-group">
+            <label>Escolha o Modelo do Currículo</label>
+            <div class="modelo-selector">
+                <div class="modelo-card-wrapper">
+                    <label class="modelo-card">
+                        <input type="radio" name="modelo" value="1" checked>
+                        <div class="modelo-info">
+                            <strong>Modelo 1: Moderno Lateral</strong>
+                            <span>Com bloco lateral azul e divisões estruturadas</span>
+                        </div>
+                    </label>
+                    <button type="button" class="btn-preview" onclick="abrirModal('1')">👁️ Visualizar (A4)</button>
+                </div>
+
+                <div class="modelo-card-wrapper">
+                    <label class="modelo-card">
+                        <input type="radio" name="modelo" value="2">
+                        <div class="modelo-info">
+                            <strong>Modelo 2: Clássico Centralizado</strong>
+                            <span>Visual limpo com destaque superior e linhas finas</span>
+                        </div>
+                    </label>
+                    <button type="button" class="btn-preview" onclick="abrirModal('2')">👁️ Visualizar (A4)</button>
+                </div>
+
+                <div class="modelo-card-wrapper">
+                    <label class="modelo-card">
+                        <input type="radio" name="modelo" value="3">
+                        <div class="modelo-info">
+                            <strong>Modelo 3: Executivo Minimalista</strong>
+                            <span>Faixa superior suave e estruturação corporativa</span>
+                        </div>
+                    </label>
+                    <button type="button" class="btn-preview" onclick="abrirModal('3')">👁️ Visualizar (A4)</button>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" id="btnGerar">Gerar e Baixar Currículo em PDF</button>
+    </form>
+</div>
+
+<!-- Janela Modal A4 -->
+<div id="modalPreview" class="modal-overlay hidden">
+    <div class="modal-content modal-a4">
+        <div class="modal-header">
+            <h3 id="modalTitulo">Pré-visualização - Tamanho Real (A4)</h3>
+            <button type="button" class="btn-fechar-modal" onclick="fecharModal()">&times;</button>
+        </div>
+        <div class="modal-body" id="modalCorpoPreview"></div>
+        <button type="button" class="btn-primary-link" style="margin-top: 15px;" onclick="fecharModal()">Fechar Visualização</button>
+    </div>
+</div>
+
+<script>
+    function abrirModal(tipoModelo) {
+        const modal = document.getElementById('modalPreview');
+        const titulo = document.getElementById('modalTitulo');
+        const corpo = document.getElementById('modalCorpoPreview');
+        modal.classList.remove('hidden');
+
+        if (tipoModelo === '1') {
+            titulo.textContent = "Modelo 1: Moderno Lateral (Pré-visualização A4)";
+            corpo.innerHTML = `
+                <div class="preview-a4" style="display: flex; height: 100%;">
+                    <div style="width: 35%; background: #2563eb; padding: 15px 10px; color: white; box-sizing: border-box;">
+                        <span style="font-size: 10px; font-weight: bold; display: block; margin-bottom: 8px;">CONTATO & DADOS</span>
+                        <div class="prev-line w-90" style="background: rgba(255,255,255,0.4); height: 6px;"></div>
+                        <div class="prev-line w-80" style="background: rgba(255,255,255,0.4); height: 6px;"></div>
+                        <div class="prev-line w-85" style="background: rgba(255,255,255,0.4); height: 6px;"></div>
+                    </div>
+                    <div style="flex: 1; padding: 15px; box-sizing: border-box;">
+                        <span style="font-size: 11px; font-weight: bold; color: #1e293b; display: block;">NOME COMPLETO DO CANDIDATO</span>
+                        <div class="prev-line w-60" style="height: 6px; margin-bottom: 8px;"></div>
+                        <div style="height: 1px; background: #cbd5e1; margin-bottom: 10px;"></div>
+                        <span style="font-size: 9px; font-weight: bold; color: #2563eb; display: block;">Objetivo / Perfil</span>
+                        <div class="prev-line w-95" style="height: 5px;"></div>
+                        <div class="prev-line w-90" style="height: 5px;"></div>
+                        <span style="font-size: 9px; font-weight: bold; color: #2563eb; display: block; margin-top: 10px;">Qualificações & Formação</span>
+                        <div class="prev-line w-95" style="height: 5px;"></div>
+                        <div class="prev-line w-85" style="height: 5px;"></div>
+                    </div>
+                </div>
+            `;
+        } else if (tipoModelo === '2') {
+            titulo.textContent = "Modelo 2: Clássico Centralizado (Pré-visualização A4)";
+            corpo.innerHTML = `
+                <div class="preview-a4" style="padding: 20px; box-sizing: border-box; text-align: center;">
+                    <span style="font-size: 12px; font-weight: bold; color: #1e293b; display: block;">NOME COMPLETO DO CANDIDATO</span>
+                    <span style="font-size: 8px; color: #64748b; display: block; margin-top: 2px;">Tel | E-mail | Cidade | Idade | CNH</span>
+                    <div style="height: 1.5px; background: #2563eb; margin: 10px 0;"></div>
+                    <div style="text-align: left; margin-top: 10px;">
+                        <span style="font-size: 9px; font-weight: bold; color: #2563eb; display: block;">OBJETIVO PROFISSIONAL</span>
+                        <div class="prev-line w-90" style="height: 5px;"></div>
+                        <span style="font-size: 9px; font-weight: bold; color: #2563eb; display: block; margin-top: 8px;">PERFIL PROFISSIONAL</span>
+                        <div class="prev-line w-95" style="height: 5px;"></div>
+                        <span style="font-size: 9px; font-weight: bold; color: #2563eb; display: block; margin-top: 8px;">FORMAÇÃO & HISTÓRICO</span>
+                        <div class="prev-line w-90" style="height: 5px;"></div>
+                        <div class="prev-line w-85" style="height: 5px;"></div>
+                    </div>
+                </div>
+            `;
+        } else if (tipoModelo === '3') {
+            titulo.textContent = "Modelo 3: Executivo Minimalista (Pré-visualização A4)";
+            corpo.innerHTML = `
+                <div class="preview-a4" style="display: flex; flex-direction: column; height: 100%;">
+                    <div style="background: #f1f5f9; padding: 15px; border-bottom: 1px solid #cbd5e1; box-sizing: border-box;">
+                        <span style="font-size: 11px; font-weight: bold; color: #0f172a; display: block;">NOME COMPLETO DO CANDIDATO</span>
+                        <span style="font-size: 8px; color: #64748b; display: block; margin-top: 2px;">Contato | E-mail | Cargo | Local | Idade | CNH</span>
+                    </div>
+                    <div style="padding: 15px; flex: 1; box-sizing: border-box; text-align: left;">
+                        <span style="font-size: 9px; font-weight: bold; color: #0f172a; display: block;">OBJETIVO PROFISSIONAL</span>
+                        <div class="prev-line w-95" style="height: 5px;"></div>
+                        <span style="font-size: 9px; font-weight: bold; color: #0f172a; display: block; margin-top: 10px;">PERFIL PROFISSIONAL</span>
+                        <div class="prev-line w-90" style="height: 5px;"></div>
+                        <span style="font-size: 9px; font-weight: bold; color: #0f172a; display: block; margin-top: 10px;">QUALIFICAÇÕES E FORMAÇÃO</span>
+                        <div class="prev-line w-95" style="height: 5px;"></div>
+                        <div class="prev-line w-85" style="height: 5px;"></div>
+                    </div>
+                </div>
+            `;
+        }
+    }
+
+    function fecharModal() {
+        document.getElementById('modalPreview').classList.add('hidden');
+    }
+</script>
+
+<script type="module" src="js/controller/curriculoController.js"></script>
+</body>
+</html>

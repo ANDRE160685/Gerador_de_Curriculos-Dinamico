@@ -1,0 +1,433 @@
+:root {
+    --primary-color: #1e40af; /* Azul corporativo profundo */
+    --primary-hover: #1e3a8a;
+    --accent-color: #2563eb;
+    --bg-color: #f1f5f9; /* Fundo cinza claro elegante */
+    --card-bg: #ffffff;
+    --text-color: #0f172a; /* Texto principal escuro e nítido */
+    --text-muted: #64748b; /* Texto secundário */
+    --border-color: #cbd5e1;
+    --border-focus: #2563eb;
+    --radius-lg: 16px;
+    --radius-md: 10px;
+    --radius-sm: 6px;
+    --shadow-subtle: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.08);
+    --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 30px 20px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Container Principal Estilizado como Cartão Flutuante */
+.container {
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-subtle);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+/* Títulos Elegantes */
+h1 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 8px;
+    letter-spacing: -0.025em;
+}
+
+p.subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 35px;
+}
+
+/* Grupos de Formulários */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 0.875rem;
+    color: var(--text-color);
+    letter-spacing: -0.01em;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    color: var(--text-color);
+    background-color: #ffffff;
+    box-sizing: border-box;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input:hover, select:hover, textarea:hover {
+    border-color: #94a3b8;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+    background-color: #ffffff;
+}
+
+textarea {
+    resize: vertical;
+    height: 110px;
+}
+
+/* Botões Modernos com Transição Suave */
+button, .btn-primary-link {
+    display: block;
+    width: 100%;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+    transition: all 0.2s ease-in-out;
+    margin-top: 20px;
+}
+
+button:hover, .btn-primary-link:hover {
+    background-color: var(--primary-hover);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+    transform: translateY(-1px);
+}
+
+button:active, .btn-primary-link:active {
+    transform: translateY(0);
+}
+
+/* Seleção de Modelos Refinada */
+.modelo-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 8px;
+}
+
+.modelo-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: #f8fafc;
+    border: 1.5px solid var(--border-color);
+    padding: 16px 20px;
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+}
+
+.modelo-card-wrapper:hover {
+    border-color: var(--accent-color);
+    background: #ffffff;
+    box-shadow: var(--shadow-card);
+}
+
+.modelo-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.modelo-card input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--accent-color);
+    cursor: pointer;
+}
+
+.modelo-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.modelo-info strong {
+    font-size: 1rem;
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+.modelo-info span {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.btn-preview {
+    background-color: #e2e8f0;
+    color: var(--text-color);
+    border: none;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s;
+    width: auto;
+    align-self: flex-end;
+    margin-top: 0;
+    box-shadow: none;
+}
+
+.btn-preview:hover {
+    background-color: var(--accent-color);
+    color: white;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Barra de Navegação Superior Moderna */
+.main-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    background: var(--card-bg);
+    padding: 12px 20px;
+    border-radius: var(--radius-lg);
+    margin-bottom: 30px;
+    box-shadow: var(--shadow-card);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nav-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 10px 16px;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+    background-color: #f1f5f9;
+    color: var(--primary-color);
+}
+
+.nav-link.active {
+    background-color: var(--accent-color);
+    color: white;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+}
+
+/* Janela Modal de Pré-visualização A4 */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.modal-content.modal-a4 {
+    background: white;
+    padding: 25px;
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 700px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    max-height: 95vh;
+    display: flex;
+    flex-direction: column;
+    animation: modalScaleUp 0.25s ease-out;
+}
+
+@keyframes modalScaleUp {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 12px;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.btn-fechar-modal {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--text-muted);
+    width: auto;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+    transition: color 0.2s;
+    box-shadow: none;
+}
+
+.btn-fechar-modal:hover {
+    color: var(--text-color);
+    transform: none;
+    box-shadow: none;
+}
+
+.modal-body {
+    overflow-y: auto;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    background: #e2e8f0;
+    padding: 20px;
+    border-radius: var(--radius-md);
+}
+
+/* Proporção de Folha A4 Real no Modal */
+.preview-a4 {
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 1 / 1.414;
+    background: white;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    overflow: hidden;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+.prev-line {
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+.prev-line.w-95 { width: 95%; }
+.prev-line.w-90 { width: 90%; }
+.prev-line.w-85 { width: 85%; }
+.prev-line.w-80 { width: 80%; }
+.prev-line.w-70 { width: 70%; }
+.prev-line.w-60 { width: 60%; }
+
+.hidden {
+    display: none;
+}
+/* Estilização e limitação de tamanho para o vídeo tutorial */
+.video-container {
+    margin-top: 15px;
+    padding: 15px;
+    background: #f8fafc;
+    border-radius: var(--radius-md);
+    border: 1.5px solid var(--border-color);
+    box-sizing: border-box;
+}
+
+.video-container h3 {
+    font-size: 1rem;
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 4px;
+}
+
+.video-container p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    max-height: 240px; /* Limita a altura para o vídeo não ocupar a tela toda */
+    background: #0f172a;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-wrapper video {
+    width: 100%;
+    max-height: 240px;
+    object-fit: contain; /* Garante que o vídeo apareça inteiro sem distorcer ou esticar */
+    display: block;
+    outline: none;
+}
+
+/* Botão do tutorial ajustado com o novo padrão profissional */
+.btn-tutorial {
+    background-color: #f1f5f9;
+    color: var(--text-color);
+    border: 1.5px solid var(--border-color);
+    padding: 12px 16px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    box-shadow: none;
+}
+
+.btn-tutorial:hover {
+    background-color: #e2e8f0;
+    border-color: #94a3b8;
+    transform: none;
+    box-shadow: none;
+}

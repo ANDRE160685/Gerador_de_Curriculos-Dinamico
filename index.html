@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inclusão Digital - Gerador de Currículos</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body >
+
+<nav class="main-nav">
+    <a href="index.html" class="nav-link active">🏠 Página Inicial</a>
+    <a href="gerador.html" class="nav-link">📄 Criar Currículo</a>
+    <a href="vagas.html" class="nav-link">💼 Procurar Vagas</a>
+    <a href="quem-somos.html" class="nav-link">👥 Quem Somos</a>
+</nav>
+
+<div class="container welcome-container">
+    <div class="hero-badge">Projeto de Extensão</div>
+    
+    <div class="tutorial-banner">
+        <button id="btnToggleVideo" class="btn-tutorial">
+            ▶ Clique aqui para compreender o site
+        </button>
+        
+        <div id="videoContainer" class="video-container hidden">
+            <h3>Como o site funciona</h3>
+            <p>Assista ao vídeo explicativo do desenvolvedor:</p>
+            
+            <div class="video-wrapper">
+                <video id="meuVideo" controls>
+                    <source src="videos/explicacao.mp4" type="video/mp4">
+                    Seu navegador não suporta a reprodução de vídeos.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <h1>Gerador de Currículos Profissionais</h1>
+    <p class="subtitle">Sistemas de Informação e Sociedade</p>
+
+    <div class="welcome-content">
+        <p>Bem-vindo à nossa ferramenta gratuita de apoio à empregabilidade. Criamos este espaço para ajudar você a estruturar um currículo limpo, direto e profissional em poucos minutos, pronto para baixar em PDF.</p>
+        
+        <div class="features-list">
+            <div class="feature-item">
+                <span class="feature-icon">⚡</span>
+                <div>
+                    <strong>Rápido e Prático</strong>
+                    <p>Preencha seus dados básicos e gere o documento instantaneamente.</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">📄</span>
+                <div>
+                    <strong>Pronto para Imprimir</strong>
+                    <p>O arquivo é gerado em formato PDF no padrão ideal para envio e impressão.</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">🎯</span>
+                <div>
+                    <strong>Foco no Mercado</strong>
+                    <p>Sugestões alinhadas com as principais áreas de atuação e vagas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="gerador.html" class="btn-primary-link">Criar Meu Currículo Agora</a>
+    <a href="vagas.html" class="btn-tutorial" style="margin-top: 10px; display: block; text-decoration: none; text-align: center;">💼 Explorar Vagas de Emprego Disponíveis</a>
+</div>
+
+<script>
+    const btnToggle = document.getElementById('btnToggleVideo');
+    const videoContainer = document.getElementById('videoContainer');
+    const meuVideo = document.getElementById('meuVideo');
+
+    btnToggle.addEventListener('click', () => {
+        const estaOculto = videoContainer.classList.contains('hidden');
+
+        if (estaOculto) {
+            videoContainer.classList.remove('hidden');
+            btnToggle.textContent = '▲ Ocultar explicação';
+            
+            meuVideo.currentTime = 0;
+            meuVideo.play().catch(error => {
+                console.log("Reprodução automática bloqueada pelo navegador:", error);
+            });
+        } else {
+            videoContainer.classList.add('hidden');
+            btnToggle.textContent = '▶ Clique aqui para compreender o site';
+            meuVideo.pause();
+        }
+    });
+
+    meuVideo.addEventListener('ended', () => {
+        videoContainer.classList.add('hidden');
+        btnToggle.textContent = '▶ Clique aqui para compreender o site';
+    });
+</script>
+
+</body>
+</html>

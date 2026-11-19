@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busca de Vagas Reais e Requisitos - Empregabilidade</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .requisitos-box {
+            background: #f1f5f9;
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 25px;
+            margin-top: 15px;
+        }
+        .requisitos-box h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+        .requisitos-box p {
+            margin: 8px 0;
+            font-size: 0.9rem;
+            color: #475569;
+        }
+        /* Grade de busca com rótulos organizados */
+        .vagas-filtros-grid-3 {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr auto;
+            gap: 12px;
+            align-items: end;
+            margin-bottom: 25px;
+        }
+        .campo-grupo {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .campo-grupo label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        @media (max-width: 768px) {
+            .vagas-filtros-grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="main-nav">
+    <a href="index.html" class="nav-link">🏠 Página Inicial</a>
+    <a href="gerador.html" class="nav-link">📄 Criar Currículo</a>
+    <a href="vagas.html" class="nav-link active">💼 Procurar Vagas</a>
+    <a href="quem-somos.html" class="nav-link">👥 Quem Somos</a>
+</nav>
+
+<div class="container vagas-container">
+    <div class="hero-badge">Portal de Oportunidades Reais</div>
+    <h1>Encontre Vagas no Mercado Real</h1>
+    <p class="subtitle">Consulte os requisitos exigidos para cada função e pesquise vagas abertas na web</p>
+
+    <!-- Campo de Seleção de Cargos / Requisitos -->
+    <div class="form-group" style="background: #ffffff; padding: 20px; border: 1px solid #cbd5e1; border-radius: 8px; margin-bottom: 20px;">
+        <label for="selectCargoRequisitos" style="font-size: 1rem; color: var(--text-color); margin-bottom: 8px;">
+            📋 Escolha um cargo para consultar os requisitos e saber se está apto:
+        </label>
+        <select id="selectCargoRequisitos">
+            <option value="">-- Selecione uma função para ver os requisitos --</option>
+            <optgroup label="Operacional e Serviços Gerais">
+                <option value="Zelador">Zelador</option>
+                <option value="Auxiliar de Limpeza">Auxiliar de Limpeza</option>
+                <option value="Porteiro">Porteiro</option>
+                <option value="Vigia">Vigia</option>
+                <option value="Jardineiro">Jardineiro</option>
+                <option value="Contínuo">Contínuo</option>
+                <option value="Auxiliar de Manutenção Predial">Auxiliar de Manutenção Predial</option>
+            </optgroup>
+            <optgroup label="Logística, Transporte e Produção">
+                <option value="Motorista">Motorista</option>
+                <option value="Entregador">Entregador</option>
+                <option value="Auxiliar de Expedição">Auxiliar de Expedição</option>
+                <option value="Estoquista">Estoquista</option>
+                <option value="Conferente">Conferente</option>
+                <option value="Operador de Empilhadeira">Operador de Empilhadeira</option>
+                <option value="Auxiliar de Faturamento">Auxiliar de Faturamento</option>
+                <option value="Analista de Supply Chain">Analista de Supply Chain</option>
+                <option value="Analista de Processos">Analista de Processos</option>
+                <option value="Supervisor de Operações">Supervisor de Operações</option>
+                <option value="Supervisor de Produção">Supervisor de Produção</option>
+                <option value="Coordenador de Logística">Coordenador de Logística</option>
+                <option value="Gerente de Produção">Gerente de Produção</option>
+            </optgroup>
+            <optgroup label="Comércio, Vendas e Atendimento">
+                <option value="Operador de Caixa">Operador de Caixa</option>
+                <option value="Atendente de Balcão">Atendente de Balcão</option>
+                <option value="Promotor de Vendas">Promotor de Vendas</option>
+                <option value="Recepcionista">Recepcionista</option>
+                <option value="Atendente de Call Center">Atendente de Call Center</option>
+                <option value="Analista de Trade Marketing">Analista de Trade Marketing</option>
+                <option value="Executivo de Contas">Executivo de Contas</option>
+                <option value="Coordenador de Atendimento">Coordenador de Atendimento</option>
+                <option value="Gerente Comercial">Gerente Comercial</option>
+                <option value="Gerente de Vendas">Gerente de Vendas</option>
+            </optgroup>
+            <optgroup label="Administrativo, Escritório e RH">
+                <option value="Assistente Administrativo">Assistente Administrativo</option>
+                <option value="Auxiliar de Contabilidade">Auxiliar de Contabilidade</option>
+                <option value="Assistente de Compras">Assistente de Compras</option>
+                <option value="Secretária Executiva">Secretária Executiva</option>
+                <option value="Analista de Recrutamento e Seleção">Analista de Recrutamento e Seleção</option>
+                <option value="Analista de Departamento Pessoal">Analista de Departamento Pessoal</option>
+                <option value="Analista de Treinamento e Desenvolvimento">Analista de Treinamento e Desenvolvimento</option>
+                <option value="Business Partner">Business Partner</option>
+                <option value="Gerente de Recursos Humanos">Gerente de Recursos Humanos</option>
+                <option value="Diretor de Recursos Humanos (CHRO)">Diretor de Recursos Humanos (CHRO)</option>
+            </optgroup>
+            <optgroup label="Tecnologia da Informação (TI)">
+                <option value="Técnico de Suporte">Técnico de Suporte</option>
+                <option value="Analista de Help Desk">Analista de Help Desk</option>
+                <option value="Administrador de Redes">Administrador de Redes</option>
+                <option value="Técnico de Infraestrutura">Técnico de Infraestrutura</option>
+                <option value="Desenvolvedor de Software Front-end">Desenvolvedor de Software Front-end</option>
+                <option value="Desenvolvedor de Software Back-end">Desenvolvedor de Software Back-end</option>
+                <option value="Desenvolvedor Full Stack">Desenvolvedor Full Stack</option>
+                <option value="Cientista de Dados">Cientista de Dados</option>
+                <option value="Arquiteto de Soluções">Arquiteto de Soluções</option>
+                <option value="Coordenador de TI">Coordenador de TI</option>
+                <option value="Gerente de TI">Gerente de TI</option>
+                <option value="Diretor de Tecnologia (CTO)">Diretor de Tecnologia (CTO)</option>
+            </optgroup>
+            <optgroup label="Técnico, Manutenção e Engenharia">
+                <option value="Técnico em Segurança do Trabalho">Técnico em Segurança do Trabalho</option>
+                <option value="Técnico de Qualidade">Técnico de Qualidade</option>
+                <option value="Operador de Máquinas CNC">Operador de Máquinas CNC</option>
+                <option value="Eletricista Industrial">Eletricista Industrial</option>
+                <option value="Mecânico de Manutenção">Mecânico de Manutenção</option>
+                <option value="Técnico em Enfermagem">Técnico em Enfermagem</option>
+                <option value="Técnico de Radiologia">Técnico de Radiologia</option>
+                <option value="Técnico Químico">Técnico Químico</option>
+                <option value="Técnico Agrícola">Técnico Agrícola</option>
+                <option value="Técnico em Edificações">Técnico em Edificações</option>
+                <option value="Engenheiro Civil">Engenheiro Civil</option>
+                <option value="Engenheiro Mecânico">Engenheiro Mecânico</option>
+                <option value="Engenheiro de Produção">Engenheiro de Produção</option>
+                <option value="Diretor de Operações (COO)">Diretor de Operações (COO)</option>
+            </optgroup>
+            <optgroup label="Financeiro, Contábil e Auditoria">
+                <option value="Contador">Contador</option>
+                <option value="Analista Financeiro">Analista Financeiro</option>
+                <option value="Analista de Custos">Analista de Custos</option>
+                <option value="Auditor Interno">Auditor Interno</option>
+                <option value="Auditor Externo">Auditor Externo</option>
+                <option value="Analista de Controladoria">Analista de Controladoria</option>
+                <option value="Analista de Crédito e Cobrança">Analista de Crédito e Cobrança</option>
+                <option value="Gerente Financeiro">Gerente Financeiro</option>
+                <option value="Diretor Financeiro (CFO)">Diretor Financeiro (CFO)</option>
+            </optgroup>
+            <optgroup label="Marketing, Comunicação e Relações">
+                <option value="Analista de Marketing">Analista de Marketing</option>
+                <option value="Especialista em Marketing Digital">Especialista em Marketing Digital</option>
+                <option value="Relações Públicas">Relações Públicas</option>
+                <option value="Gerente de Marketing">Gerente de Marketing</option>
+                <option value="Diretor de Marketing (CMO)">Diretor de Marketing (CMO)</option>
+            </optgroup>
+            <optgroup label="Jurídico, Gestão Executiva e Estratégia">
+                <option value="Advogado Corporativo">Advogado Corporativo</option>
+                <option value="Gerente de Projetos">Gerente de Projetos</option>
+                <option value="Membro do Conselho de Administração">Membro do Conselho de Administração</option>
+                <option value="Diretor-Presidente (CEO)">Diretor-Presidente (CEO)</option>
+            </optgroup>
+        </select>
+
+        <button id="btnCapturarCargo" type="button" style="margin-top: 12px; background-color: #059669;">
+            📥 Copiar Nome do Cargo para o Campo de Pesquisa
+        </button>
+    </div>
+
+    <!-- Caixa de Exibição dos Requisitos -->
+    <div id="containerRequisitos" class="requisitos-box hidden">
+        <h3 id="tituloCargoReq">Selecione um cargo</h3>
+        <p id="descPerfilReq"><strong>Foco de Atuação:</strong> -</p>
+        <p id="descRequisitosReq"><strong>Requisitos do Mercado:</strong> -</p>
+    </div>
+
+    <!-- Seção de Busca Online -->
+    <div id="secaoOnline">
+        <div class="vagas-filtros-grid-3">
+            <div class="campo-grupo">
+                <label for="buscaVagaReal">Cargo da Vaga</label>
+                <input type="text" id="buscaVagaReal" placeholder="Ex: Auxiliar de Limpeza...">
+            </div>
+            <div class="campo-grupo">
+                <label for="buscaEstadoReal">Estado (UF)</label>
+                <input type="text" id="buscaEstadoReal" placeholder="Ex: PE">
+            </div>
+            <div class="campo-grupo">
+                <label for="buscaCidadeReal">Cidade</label>
+                <input type="text" id="buscaCidadeReal" placeholder="Ex: Recife">
+            </div>
+            <button id="btnBuscarNoMundo" style="margin-top: 0; background-color: var(--primary-color); height: 42px;">Pesquisar</button>
+        </div>
+        <p style="font-size: 0.8rem; color: #64748b; margin-bottom: 20px; text-align: center;">
+            * Preencha a função, informe o Estado e a Cidade desejados, e clique em pesquisar.
+        </p>
+    </div>
+</div>
+
+<script>
+    const baseRequisitosCargos = {
+        "Zelador": { foco: "Conservação, limpeza e supervisão de pequenas manutenções prediais.", requisitos: "Ensino fundamental completo, bom relacionamento interpessoal, noções de elétrica/hidráulica básica e proatividade." },
+        "Auxiliar de Limpeza": { foco: "Limpeza, higienização e organização de ambientes corporativos ou residenciais.", requisitos: "Pontualidade, disposição física, atenção aos detalhes e capacidade de seguir normas de higiene e segurança." },
+        "Porteiro": { foco: "Controle de acesso de visitantes, moradores e veículos em portarias.", requisitos: "Ensino fundamental ou médio, boa comunicação verbal, atenção redobrada, noções básicas de informática e segurança." },
+        "Vigia": { foco: "Ronda patrimonial preventiva e vigilância ostensiva de instalações.", requisitos: "Ensino fundamental/médio, estabilidade emocional, atenção constante e disponibilidade para escalas." },
+        "Jardineiro": { foco: "Cultivo, poda, adubação e manutenção de áreas verdes e jardins.", requisitos: "Experiência com manuseio de ferramentas de corte (podadeiras, roçadeiras) e conhecimento básico de plantas." },
+        "Contínuo": { foco: "Transporte de documentos, pequenos volumes e atendimento a serviços externos.", requisitos: "Ensino fundamental, dinamismo, conhecimento da malha urbana local e pontualidade." },
+        "Auxiliar de Manutenção Predial": { foco: "Pequenos reparos corretivos e preventivos em alvenaria, pintura, elétrica e hidráulica.", requisitos: "Ensino médio/técnico básico, habilidade manual com ferramentas e vivência prática em manutenção." },
+        "Motorista": { foco: "Condução segura de veículos de passeio ou utilitários para transporte de cargas ou passageiros.", requisitos: "CNH compatível com a categoria da vaga, boa pontuação na carteira, direção defensiva e pontualidade." },
+        "Entregador": { foco: "Entrega rápida de mercadorias, documentos ou pedidos na região designada.", requisitos: "CNH ou habilitação para moto/veículo compatível, bom conhecimento de rotas locais e agilidade." },
+        "Auxiliar de Expedição": { foco: "Separação, conferência, embalagem e despacho de mercadorias.", requisitos: "Ensino médio, organização, agilidade e familiaridade básica com sistemas de estoque." },
+        "Estoquista": { foco: "Organização, controle de entradas, saídas e inventário físico de mercadorias.", requisitos: "Ensino médio completo, informática básica (Excel), atenção e rigor com contagem de itens." },
+        "Conferente": { foco: "Validação de cargas, notas fiscais, volumes expedidos e recebidos.", requisitos: "Ensino médio, atenção redobrada aos detalhes, capacidade analítica e experiência prévia em logística." },
+        "Operador de Empilhadeira": { foco: "Movimentação segura de cargas pesadas em armazéns e centros de distribuição.", requisitos: "Curso oficial de operador de empilhadeira, CNH válida e certificação de reciclagem em dia." },
+        "Operador de Caixa": { foco: "Registro de mercadorias, recebimento de pagamentos e fechamento de caixa.", requisitos: "Ensino médio completo, agilidade com números, simpatia no atendimento e responsabilidade financeira." },
+        "Atendente de Balcão": { foco: "Recepção e atendimento direto ao público para prestação de serviços ou vendas.", requisitos: "Boa comunicação oral, paciência, empatia e facilidade para trabalhar em equipe." },
+        "Promotor de Vendas": { foco: "Abastecimento, organização e exposição de produtos em pontos de venda.", requisitos: "Ensino médio, perfil dinâmico, boa comunicação e foco em resultados de visibilidade de marca." },
+        "Recepcionista": { foco: "Recepção de clientes, atendimento telefônico e direcionamento interno.", requisitos: "Boa dicção, postura profissional, informática básica e organização." },
+        "Atendente de Call Center": { foco: "Atendimento ativo ou receptivo via telefone/chat para suporte ou vendas.", requisitos: "Boa comunicação verbal, clareza, digitação ágil e resiliência." },
+        "Assistente Administrativo": { foco: "Rotinas de escritório, controle de planilhas, arquivos e apoio a gestores.", requisitos: "Ensino médio/superior cursando, domínio do Pacote Office (Word e Excel) e organização." },
+        "Auxiliar de Contabilidade": { foco: "Lançamentos contábeis, conciliação bancária e organização de documentos fiscais.", requisitos: "Cursando Ciências Contábeis ou técnico, atenção aos detalhes e conhecimentos de Excel." },
+        "Auxiliar de Faturamento": { foco: "Emissão de notas fiscais, boletos e conferência de faturamento de vendas.", requisitos: "Ensino médio completo, precisão matemática e familiaridade com sistemas ERP." },
+        "Assistente de Compras": { foco: "Cotação de preços, contato com fornecedores e emissão de ordens de compra.", requisitos: "Ensino superior cursando, negociação, organização e raciocínio lógico." },
+        "Secretária Executiva": { foco: "Gestão de agendas complexas, organização de viagens e correspondência executiva.", requisitos: "Ensino superior em Secretariado ou áreas afins, fluência verbal e extrema discrição." },
+        "Técnico de Suporte": { foco: "Atendimento e resolução de problemas de hardware, software e redes para usuários.", requisitos: "Curso técnico em TI ou superior em andamento, lógica de resolução de problemas e boa comunicação." },
+        "Analista de Help Desk": { foco: "Triagem, atendimento e escalonamento de chamados técnicos de suporte.", requisitos: "Conhecimento em sistemas operacionais, redes básicas e foco na satisfação do usuário." },
+        "Administrador de Redes": { foco: "Configuração, segurança e monitoramento de redes locais e corporativas.", requisitos: "Formação em TI, certificações de rede (Cisco/CompTIA) e experiência prática." },
+        "Técnico de Infraestrutura": { foco: "Instalação e manutenção de servidores, cabeamento estruturado e hardwares.", requisitos: "Curso técnico na área, conhecimento em infraestrutura física e lógica." },
+        "Técnico em Segurança do Trabalho": { foco: "Inspeção de normas regulamentadoras (NRs), prevenção de acidentes e EPIs.", requisitos: "Formação técnica completa em Segurança do Trabalho e registro profissional ativo." },
+        "Técnico de Qualidade": { foco: "Inspeção de processos produtivos, testes de conformidade e auditorias internas.", requisitos: "Curso técnico em qualidade ou áreas correlatas, metodologias estatísticas e rigor técnico." },
+        "Operador de Máquinas CNC": { foco: "Programação e operação de tornos e fresadoras CNC para usinagem.", requisitos: "Curso técnico de mecânica/usinagem, leitura e interpretação de desenhos técnicos (CAD)." },
+        "Eletricista Industrial": { foco: "Instalação, manutenção preventiva e corretiva em painéis e motores elétricos industriais.", requisitos: "Curso técnico em eletrotécnica, certificação NR-10 e NR-35." },
+        "Mecânico de Manutenção": { foco: "Reparo e conservação de máquinas, equipamentos industriais e linhas de produção.", requisitos: "Formação técnica em mecânica, conhecimento de hidráulica e pneumática." },
+        "Técnico em Enfermagem": { foco: "Assistência direta a pacientes, administração de medicamentos e suporte médico.", requisitos: "Curso técnico em enfermagem concluído e registro ativo no COREN." },
+        "Técnico de Radiologia": { foco: "Operação de equipamentos de diagnóstico por imagem com segurança radiológica.", requisitos: "Curso técnico em radiologia e registro profissional regularizado." },
+        "Técnico Químico": { foco: "Análises laboratoriais, controle de qualidade de matérias-primas e soluções.", requisitos: "Formação técnica em química e registro no CRQ." },
+        "Técnico Agrícola": { foco: "Apoio em projetos agronômicos, manejo de lavouras e controle de pragas.", requisitos: "Curso técnico agrícola e conhecimento em técnicas modernas de cultivo." },
+        "Técnico em Edificações": { foco: "Acompanhamento de obras, leitura de projetos e controle de cronogramas.", requisitos: "Formação técnica em edificações e domínio de softwares de desenho técnico (AutoCAD)." },
+        "Contador": { foco: "Gestão contábil, entrega de obrigações acessórias e balanços patrimoniais.", requisitos: "Graduação completa em Ciências Contábeis e registro ativo no CRC." },
+        "Analista Financeiro": { foco: "Controle de fluxo de caixa, contas a pagar/receber e projeções financeiras.", requisitos: "Ensino superior em Administração, Economia ou Ciências Contábeis, Excel avançado." },
+        "Analista de Custos": { foco: "Apuração, análise e controle dos custos de produção ou operação da empresa.", requisitos: "Superior em áreas financeiras/contábeis e forte capacidade analítica." },
+        "Auditor Interno": { foco: "Exame de processos, conformidade financeira e verificação de riscos internos.", requisitos: "Superior completo, conhecimentos profundos em contabilidade e controles internos." },
+        "Auditor Externo": { foco: "Auditoria de demonstrações financeiras em empresas clientes por consultorias.", requisitos: "Superior completo em contabilidade/administração, disponibilidade para viagens e CRC." },
+        "Analista de Controladoria": { foco: "Gestão orçamentária, relatórios gerenciais e suporte à tomada de decisão estratégica.", requisitos: "Superior completo em finanças/contábeis e domínio de ERPs de mercado." },
+        "Analista de Crédito e Cobrança": { foco: "Análise de risco de crédito para clientes e gestão de recuperação de inadimplência.", requisitos: "Experiência prévia em análise financeira e boa capacidade de negociação." },
+        "Analista de Recrutamento e Seleção": { foco: "Condução de processos seletivos, entrevistas e alinhamento de perfil com gestores.", requisitos: "Graduação em Psicologia ou Administração, empatia e excelentes habilidades de comunicação." },
+        "Analista de Departamento Pessoal": { foco: "Folha de pagamento, encargos sociais, ponto eletrônico e rotinas trabalhistas.", requisitos: "Conhecimento profundo da CLT, organização e atenção à legislação vigente." },
+        "Analista de Treinamento e Desenvolvimento": { foco: "Planejamento e aplicação de programas de capacitação e desenvolvimento de equipes.", requisitos: "Superior em Pedagogia, Administração ou Psicologia, didática e facilidade com facilitação de grupos." },
+        "Business Partner": { foco: "Atuação estratégica de RH integrada aos objetivos de negócio dos líderes de áreas.", requisitos: "Sólida experiência prévia generalista em RH, visão estratégica e forte comunicação." },
+        "Analista de Marketing": { foco: "Planejamento e execução de campanhas de marketing, comunicação e eventos.", requisitos: "Superior em Marketing, Publicidade ou Administração, criatividade e visão de mercado." },
+        "Especialista em Marketing Digital": { foco: "Estratégias de tráfego pago, SEO, redes sociais e captação de leads online.", requisitos: "Domínio de ferramentas de anúncio (Meta Ads, Google Ads) e análise de métricas (Analytics)." },
+        "Executivo de Contas": { foco: "Prospecção, fechamento de vendas B2B e gestão de carteira de clientes estratégicos.", requisitos: "Experiência em negociação comercial, orientação para metas e resiliência." },
+        "Analista de Trade Marketing": { foco: "Estratégias de vendas no ponto de venda (PDV) e relacionamento com o varejo.", requisitos: "Superior completo, visão comercial e capacidade analítica de dados de consumo." },
+        "Relações Públicas": { foco: "Gestão de imagem institucional, comunicação corporativa e assessoria de imprensa.", requisitos: "Graduação em Relações Públicas ou Comunicação Social, excelente oratória e escrita." },
+        "Desenvolvedor de Software Front-end": { foco: "Criação de interfaces web responsivas e interativas para usuários.", requisitos: "Domínio de HTML, CSS, JavaScript e frameworks modernos (React, Vue ou Angular)." },
+        "Desenvolvedor de Software Back-end": { foco: "Desenvolvimento de APIs, regras de negócio e arquitetura de servidores e bancos de dados.", requisitos: "Domínio de linguagens como Python, Node.js, Java ou C#, além de modelagem de dados." },
+        "Desenvolvedor Full Stack": { foco: "Desenvolvimento completo de aplicações, atuando tanto no Front-end quanto no Back-end.", requisitos: "Experiência robusta em desenvolvimento web ponta a ponta e arquitetura de sistemas." },
+        "Cientista de Dados": { foco: "Construção de modelos preditivos, inteligência artificial e análise avançada de grandes bases de dados.", requisitos: "Formação em exatas, domínio de Python/R, estatística avançada e Machine Learning." },
+        "Engenheiro Civil": { foco: "Projeto, execução e fiscalização de obras de construção civil e infraestrutura.", requisitos: "Graduação em Engenharia Civil e registro ativo no CREA." },
+        "Engenheiro Mecânico": { foco: "Projeto e supervisão de sistemas mecânicos, térmicos e linhas produtivas.", requisitos: "Graduação em Engenharia Mecânica e registro ativo no CREA." },
+        "Engenheiro de Produção": { foco: "Otimização de processos produtivos, redução de desperdícios e gestão industrial.", requisitos: "Graduação em Engenharia de Produção e conhecimento em Lean Manufacturing / Seis Sigma." },
+        "Arquiteto de Soluções": { foco: "Desenho e estruturação de arquiteturas de sistemas de TI corporativos complexos.", requisitos: "Sólida bagagem técnica em desenvolvimento/infraestrutura e visão de negócios em nuvem." },
+        "Advogado Corporativo": { foco: "Assessoria jurídica preventiva, contratual e contenciosa para empresas.", requisitos: "Graduação em Direito, OAB ativa e experiência prévia no meio corporativo." },
+        "Gerente de Projetos": { foco: "Planejamento, execução, controle e entrega de projetos dentro de prazo e orçamento.", requisitos: "Certificação em gestão (PMP/Scrum), liderança e excelente organização." },
+        "Gerente Financeiro": { foco: "Gestão estratégica do capital, investimentos, captação de recursos e saúde financeira.", requisitos: "Sólida experiência em finanças corporativas, visão estratégica e liderança." },
+        "Gerente de Recursos Humanos": { foco: "Liderança estratégica da área de pessoas, clima organizacional e retenção de talentos.", requisitos: "Experiência em liderança de RH, visão de negócios e profundo conhecimento de gestão de pessoas." },
+        "Gerente Comercial": { foco: "Definição de estratégias de vendas, liderança de equipes comerciais e metas de faturamento.", requisitos: "Histórico comprovado em gestão de equipes de vendas e orientação agressiva para resultados." },
+        "Gerente de Vendas": { foco: "Supervisão direta de vendedores, rotinas comerciais e expansão de mercado.", requisitos: "Forte vivência comercial, liderança inspiradora e foco em metas." },
+        "Gerente de Marketing": { foco: "Liderança de estratégias de marca, campanhas publicitárias e posicionamento de mercado.", requisitos: "Visão estratégica de marketing, criatividade e gestão de budget e equipes." },
+        "Gerente de Produção": { foco: "Gestão global de plantas fabris, metas produtivas, segurança e eficiência operacional.", requisitos: "Sólida experiência em gestão industrial e processos fabris." },
+        "Gerente de TI": { foco: "Gestão de equipes de tecnologia, infraestrutura, sistemas e alinhamento estratégico digital.", requisitos: "Experiência em gestão de tecnologia e liderança de equipes multidisciplinares de TI." },
+        "Membro do Conselho de Administração": { foco: "Orientação estratégica de alto nível, governança corporativa e fiscalização de diretoria.", requisitos: "Extensa experiência executiva, reputação ilibada e visão macro de negócios." },
+        "Diretor de Marketing (CMO)": { foco: "Direção executiva global das estratégias de marketing, marca e expansão de mercado.", requisitos: "Trajetória sênior em liderança de marketing corporativo e inovação." },
+        "Diretor de Recursos Humanos (CHRO)": { foco: "Estratégia corporativa de gestão de capital humano e cultura organizacional em nível executivo.", requisitos: "Experiência executiva em RH de grandes corporações." },
+        "Diretor de Tecnologia (CTO)": { foco: "Liderança tecnológica executiva, inovação de produtos digitais e arquitetura corporativa de TI.", requisitos: "Sólida carreira executiva em tecnologia e desenvolvimento de produtos." },
+        "Diretor de Operações (COO)": { foco: "Gestão executiva de toda a operação, logística e eficiência dos processos da empresa.", requisitos: "Ampla experiência em gestão operacional de grande escala." },
+        "Diretor Financeiro (CFO)": { foco: "Direção executiva financeira, relações com investidores e estratégia orçamentária macro.", requisitos: "Sólida experiência executiva em finanças e governança corporativa." },
+        "Diretor-Presidente (CEO)": { foco: "Liderança executiva máxima, definição dos rumos estratégicos e representação da empresa.", requisitos: "Extensa experiência de liderança executiva e visão sistêmica de negócios." }
+    };
+
+    const selectCargo = document.getElementById('selectCargoRequisitos');
+    const containerReq = document.getElementById('containerRequisitos');
+    const tituloReq = document.getElementById('tituloCargoReq');
+    const descPerfil = document.getElementById('descPerfilReq');
+    const descRequisitos = document.getElementById('descRequisitosReq');
+    
+    const inputBuscaReal = document.getElementById('buscaVagaReal');
+    const inputEstadoReal = document.getElementById('buscaEstadoReal');
+    const inputCidadeReal = document.getElementById('buscaCidadeReal');
+    const btnCapturarCargo = document.getElementById('btnCapturarCargo');
+    const btnBuscarNoMundo = document.getElementById('btnBuscarNoMundo');
+
+    // Ao selecionar um cargo, exibe seus requisitos
+    selectCargo.addEventListener('change', (e) => {
+        const cargoSelecionado = e.target.value;
+        if (!cargoSelecionado) {
+            containerReq.classList.add('hidden');
+            return;
+        }
+
+        const dados = baseRequisitosCargos[cargoSelecionado];
+        if (dados) {
+            tituloReq.textContent = `📋 Requisitos e Perfil para: ${cargoSelecionado}`;
+            descPerfil.innerHTML = `<strong>Foco de Atuação:</strong> ${dados.foco}`;
+            descRequisitos.innerHTML = `<strong>Requisitos do Mercado:</strong> ${dados.requisitos}`;
+            containerReq.classList.remove('hidden');
+        } else {
+            containerReq.classList.add('hidden');
+        }
+    });
+
+    // Copia o cargo selecionado para o input de busca
+    btnCapturarCargo.addEventListener('click', () => {
+        const cargoSelecionado = selectCargo.value;
+        if (!cargoSelecionado) {
+            alert("Por favor, selecione uma função na lista acima primeiro!");
+            selectCargo.focus();
+            return;
+        }
+
+        inputBuscaReal.value = cargoSelecionado;
+        inputEstadoReal.focus();
+    });
+
+    // Executa a busca unindo Cargo, Estado e Cidade
+    btnBuscarNoMundo.addEventListener('click', () => {
+        const termo = inputBuscaReal.value.trim();
+        const estado = inputEstadoReal.value.trim();
+        const cidade = inputCidadeReal.value.trim();
+        
+        if (!termo) {
+            alert("Por favor, informe ou capture o cargo desejado!");
+            inputBuscaReal.focus();
+            return;
+        }
+
+        const queryFinal = encodeURIComponent(`vagas de emprego ${termo} ${cidade} ${estado}`);
+        window.open(`https://www.google.com/search?q=${queryFinal}`, '_blank');
+    });
+</script>
+
+</body>
+</html>
